@@ -31,7 +31,7 @@ hydra -L users.txt -P pass.txt < ip- нов > ssh
 Включение защиты SSH для Fail2Ban:
 открыть файл /etc/fail2ban/jail.conf, найти секцию ssh, установить включено в true .
 В качестве ответа пришлите события, которые появились в логах Suricata и Fail2Ban, прокомментируйте результат.
-![Лог аутентификации (/var/log/auth.log)]()
+![Лог аутентификации (/var/log/auth.log)](https://github.com/Bespochadny/13-03.hw/blob/main/sys-pattern-homework-main/img/16.png)
 ![Лог Suricata]()
 ![Лог Fail2Ban]()
 Результаты атаки брутфорс на SSH:
