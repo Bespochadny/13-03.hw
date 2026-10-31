@@ -15,6 +15,7 @@ sudo nmap -sS <ip-адрес>
 sudo nmap -sV <ip-адрес>
 
 В качестве ответа пришлите события, которые появились в логах Suricata и Fail2Ban, прокомментируйте результат.
+
 ![Скриншот](https://github.com/Bespochadny/13-03.hw/blob/main/sys-pattern-homework-main/img/3.png)
 
 Разделение ответственности:
@@ -24,16 +25,21 @@ sudo nmap -sV <ip-адрес>
 
 ## Задание 2
 Проделайте атаку на настройку пароля для службы SSH:
-hydra -L users.txt -P pass.txt < ip- нов > ssh
+- hydra -L users.txt -P pass.txt < ip- нов > ssh
 гидра:​
-создайте два файла: user.txt и pass.txt ;
+- создайте два файла: user.txt и pass.txt ;
 В каждой строчке первого файла должны быть имена пользователей, второго — пароли. В нашем случае это могут быть случайные строки, но ради эксперимента можно добавить имя и пароль существующего пользователя.
-Включение защиты SSH для Fail2Ban:
-открыть файл /etc/fail2ban/jail.conf, найти секцию ssh, установить включено в true .
+- Включение защиты SSH для Fail2Ban:
+открыть файл /etc/fail2ban/jail.conf, найти секцию ssh, установить включено в true.
+
 В качестве ответа пришлите события, которые появились в логах Suricata и Fail2Ban, прокомментируйте результат.
+- Лог аутентификации
 ![Лог аутентификации (/var/log/auth.log)](https://github.com/Bespochadny/13-03.hw/blob/main/sys-pattern-homework-main/img/16.png)
+- Лог Suricata
 ![Лог Suricata](https://github.com/Bespochadny/13-03.hw/blob/main/sys-pattern-homework-main/img/4.png)
+Лог Fail2Ban
 ![Лог Fail2Ban](https://github.com/Bespochadny/13-03.hw/blob/main/sys-pattern-homework-main/img/5.png)
+
 Результаты атаки брутфорс на SSH:
 1. Зафиксированы множественные неудачные попытки входа с IP 10.10.10.10 (Kali Linux) для пользователей admin, root, msfadmin. SSH-демон корректно регистрировал каждую попытку как Failed password и Invalid user, что является необходимым условием для работы Fail2Ban.
 2. Зафиксированы алерты SURICATA STREAM excessive retransmissions — система обнаружила аномально высокую частоту TCP-соединений на порт 22, что характерно для автоматизированной атаки перебора.
