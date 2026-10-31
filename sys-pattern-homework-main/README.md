@@ -15,7 +15,7 @@ sudo nmap -sS <ip-адрес>
 sudo nmap -sV <ip-адрес>
 
 В качестве ответа пришлите события, которые появились в логах Suricata и Fail2Ban, прокомментируйте результат.
-![Скриншот]()
+![Скриншот](https://github.com/Bespochadny/13-03.hw/blob/main/sys-pattern-homework-main/img/3.png)
 
 Разделение ответственности:
 Эксперимент наглядно демонстрирует разницу между сетевой безопасностью и безопасностью на уровне приложений. Suricata эффективно обнаружила все виды сетевого сканирования (-sA, -sT, -sS, -sV), так как анализирует аномалии в заголовках TCP-пакетов;
@@ -32,8 +32,8 @@ hydra -L users.txt -P pass.txt < ip- нов > ssh
 открыть файл /etc/fail2ban/jail.conf, найти секцию ssh, установить включено в true .
 В качестве ответа пришлите события, которые появились в логах Suricata и Fail2Ban, прокомментируйте результат.
 ![Лог аутентификации (/var/log/auth.log)](https://github.com/Bespochadny/13-03.hw/blob/main/sys-pattern-homework-main/img/16.png)
-![Лог Suricata]()
-![Лог Fail2Ban]()
+![Лог Suricata](https://github.com/Bespochadny/13-03.hw/blob/main/sys-pattern-homework-main/img/4.png)
+![Лог Fail2Ban](https://github.com/Bespochadny/13-03.hw/blob/main/sys-pattern-homework-main/img/5.png)
 Результаты атаки брутфорс на SSH:
 1. Зафиксированы множественные неудачные попытки входа с IP 10.10.10.10 (Kali Linux) для пользователей admin, root, msfadmin. SSH-демон корректно регистрировал каждую попытку как Failed password и Invalid user, что является необходимым условием для работы Fail2Ban.
 2. Зафиксированы алерты SURICATA STREAM excessive retransmissions — система обнаружила аномально высокую частоту TCP-соединений на порт 22, что характерно для автоматизированной атаки перебора.
